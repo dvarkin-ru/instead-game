@@ -10,15 +10,20 @@ game.act = 'Не работает.';
 game.use = 'Это не поможет.';
 game.inv = 'Зачем мне это?';
 
+
+
 room {
 	nam = 'main';
-	disp = "Подвал";
-	dsc = [[Вы очутились в подвале, из которого можно выйти на место запуска.]];
-	way = {path {'Выйти на поверхность', "пустошь"} };
+	disp = "Начало игры";
+	dsc = [[тут что-то про начало игры]];
+	way = {path {'Начать', "start10"} }; -- пока не сделано нормальное переключение по главам, ссылаюсь на свой блок (10)
+
 }
 
-include "launchpad"
-include "ship"
-include "flight"
-include "landing"
+--include "launchpad"
+--include "ship"
+--include "flight"
+--include "landing"
+include "flightProcess-10"
+
 
