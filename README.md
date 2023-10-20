@@ -10,7 +10,7 @@
 - landing - приземление и общение с кем-то
 - --------------------------------------------
 ## Карта корабля
-<img width="829" alt="image" src="https://github.com/KonanHaumi/instead-game/assets/55504771/c7bf7e44-1b2f-44c3-83b8-099efec5c64d">
+<img width="794" alt="image" src="https://github.com/KonanHaumi/instead-game/assets/55504771/1aacd3bc-39ee-466e-8b8a-64e45370662a">
 
 ----------------------------------------------
 ## "Ресурсы"
