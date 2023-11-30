@@ -25,5 +25,6 @@ room {
 --include "flight"
 --include "landing"
 include "flightProcess-10"
+include "map"
 
 
