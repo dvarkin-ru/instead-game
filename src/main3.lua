@@ -3,8 +3,13 @@
 -- $Author: Анонимный любитель текстовых приключений$
 -- $Info: Это ремейк старой игры\nС ZX specturm$
 
+-- Настройка оформления
+
+
+
 require "fmt" -- некоторые функции форматирования
 fmt.para = true -- включить режим параграфов (отступы)
+
 
 game.act = 'Не работает.';
 game.use = 'Это не поможет.';
@@ -25,6 +30,8 @@ room {
 --include "flight"
 --include "landing"
 include "flightProcess-10"
+include "tasks"
 include "map"
+
 
 
