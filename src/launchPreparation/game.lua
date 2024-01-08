@@ -43,7 +43,7 @@ function formatTime(time)
   local hours = math.floor((time / 3600) % 24)
   local days = math.floor(time / 86400)
 
-  return string.format('%d дней %2d часов %2d минут', days, hours, minutes)
+  return string.format('%d д. %2d ч. %2d м.', days, hours, minutes)
 end
 
 function getTimeStamp(value, unit)
