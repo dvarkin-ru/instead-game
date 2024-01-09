@@ -1,5 +1,8 @@
 require 'os'
+require 'snd'
 require 'snapshots'
+
+snd.music 'assets/theme.mp3'
 
 ------------------------
 -- Константы -----------
@@ -16,7 +19,10 @@ global {
 function setOptions(name, timeValue, timeUnit)
   local v = {}
   v.disp = name;
-  v.dsc = string.format('{%s (%s %s.)} |', name, timeValue, timeUnit);
+  v.dsc =  function(s)
+    p(string.format([[{%s (%s %s.)}]], name, timeValue, timeUnit));
+    p(fmt.c '^');
+  end
   v.act = function(s)
     remove(s)
     timestamp = timestamp - getTimeStamp(timeValue, timeUnit);
@@ -65,8 +71,8 @@ stat {
   nam = 'статусы';
   disp = function(s)
     pn ('Оставлееся время: ', formatTime(timestamp))
-    pn ('Баги: ', bugsCount)     -- убрать на релизе
-    pn ('Кол-во проверок: ', checkCount)     -- убрать на релизе
+    pn ('Неисправности: ', bugsCount)     -- убрать на релизе(?)
+    pn ('Кол-во проверок: ', checkCount)
     pn ('_____________')
   end
 };
@@ -79,13 +85,16 @@ end
 -- Основа --------------
 ------------------------
 document = obj {
-  disp = 'документ';
-  dsc = [[На столе лежит {документ} неизвестного содержания...]];
+  disp = 'документ'..fmt.img('assets/book.png');
+  dsc = function(s)
+    p [[На столе лежит {документ} неизвестного содержания...^^]]
+    p(fmt.tab('50%', 'center')..fmt.img('assets/document.png'))
+  end;
   valid = rnd(10) > 1;
   tak = function(s)
 		if s.valid then
 			p [[О! Так это же документ подтверждающий тестирование. Даже печать стоит! С документом все в порядке]];
-      timestamp = timestamp - 60;
+      timestamp = timestamp - 60 * 5;
       walk(roomList)
       return true;
 		else
@@ -95,30 +104,60 @@ document = obj {
 	end;
 }
 
+coffeeBreak = room {
+  disp = 'Перерыв на кофе 15 минуточек';
+	pic = 'assets/coffee.gif';
+  way = { path {'Вернуться к работе', 'roomList'} };
+}
+
 roomList = room {
+  nam = 'roomList';
   disp = 'Список проверок';
   obj = {
-    setOptions('Проверка на пригодность площадки', 6, 'д'),
+    setOptions('Проверка на пригодность площадки', 4, 'ч'),
     setOptions('Проверка на механические повреждения', 1, 'д'),
-    setOptions('Проверка системы безопасности', 1, 'д'),
-    setOptions('Проверка системы энергоснабжения', 1, 'д'),
-    setOptions('Проверка системы крепления', 1, 'д'),
-    setOptions('Проверка стыковочных механизмов', 1, 'д'),
-    setOptions('Проверка систем связи', 1, 'д'),
-    setOptions('Проверка оборудования', 1, 'д'),
-    setOptions('Проверка герметичности', 1, 'д'),
-    setOptions('Проверка системы питания', 1, 'д'),
-    setOptions('Проверка топлива', 1, 'д'),
+    setOptions('Проверка системы безопасности', 14, 'ч'),
+    setOptions('Проверка системы энергоснабжения', 3, 'ч'),
+    setOptions('Проверка системы крепления', 2, 'ч'),
+    setOptions('Проверка стыковочных механизмов', 1, 'ч'),
+    setOptions('Проверка систем связи', 18, 'ч'),
+    setOptions('Проверка оборудования', 13, 'ч'),
+    setOptions('Проверка герметичности', 7, 'ч'),
+    setOptions('Проверка системы питания ракеты', 8, 'ч'),
+    setOptions('Проверка топлива', 3, 'ч'),
     setOptions('Проверка системы подачи кислорода', 1, 'д'),
+    setOptions('Проверка системы вентиляции', 8, 'ч'),
+    setOptions('Проверка системы отопления', 12, 'ч'),
+    setOptions('Проверка системы охлаждения', 12, 'ч'),
+    setOptions('Проверка двигателей', 1, 'д'),
+    setOptions('Проверка наличия на борту средств первой необходимости (Комплекс)', 1, 'д'),
+    setOptions('Проверка наличия, количества, исправности и качества костюмов ', 1, 'д'),
+    setOptions('Проверка самочувствия космонавтов ', 2, 'ч'),
+    setOptions('Проверка физического состояния космонавтов ', 40, 'м'),
+    setOptions('Проверка психологического состояния космонавтов ', 20, 'м'),
+    setOptions('Проверка на отсутствие колюще-режущих вещей', 10, 'м'),
+    setOptions('Проверка на отсутствие легко-воспламеняющихся вещей', 10, 'м'),
+    setOptions('Проверка расчетов на корректность', 2, 'д'),
   };
+  coffeeTime = 5;
   exit = function(s)
+    s.coffeeTime = s.coffeeTime - 1
+
     if #s.obj == 0 or timestamp == 0 then
       if (bugsCount > 0) then
-        walk('fail');
+        walk(fail);
       else
-        walk('ready');
-      end
-    end
+        walk(ready);
+      end;
+      return
+    end;
+
+    if s.coffeeTime == 0 then
+      s.coffeeTime = 5
+      timestamp = timestamp - 60 * 15;
+      walk(coffeeBreak);
+      return
+    end;
   end;
 }
 
@@ -134,17 +173,15 @@ room {
 ----------------------------
 -- Заключительные комнаты --
 ----------------------------
-room {
-	nam = 'ready';
-	disp = 'Победа!';
-	dsc = [[Проверка всех систем успешна!]];
+ready = room {
+	disp = 'Это чудесное чувство после хорошо сделанной работы';
+	dsc = [[Все системы ракеты проверены и работают безупречно, словно после чашки кофе с утра. Ракета готова к своему звездному вылету! Время покорить космос!]];
 	pic = 'assets/ready.gif';
 }
 
-room {
-	nam = 'fail';
+fail = room {
 	disp = 'Вы проиграли';
-	dsc = [[Фэйл]];
+	dsc = [[Ну что сказать, наша ракета проявила характер испуганной кошки и взорвалась при старте. Наверное, ей нужно было больше мотивации, чем просто "выпустить в космос"!]];
 	pic = 'assets/fail2.gif';
 }: with {
 	obj {
