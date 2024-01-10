@@ -70,7 +70,7 @@ end
 stat {
   nam = 'статусы';
   disp = function(s)
-    pn ('Оставлееся время: ', formatTime(timestamp))
+    pn ('Оставшееся время: ', formatTime(timestamp))
     pn ('Неисправности: ', bugsCount)     -- убрать на релизе(?)
     pn ('Кол-во проверок: ', checkCount)
     pn ('_____________')
