@@ -4,12 +4,15 @@
  
 
 -------------------------
+
 global {
     humanHP = 100;
     rocketHP = 100;
 	resourceHP = 100;
 	oxygenHP = 100;
 	cycle = 0;
+	goal = '';
+	pic = '';
 }
 
 stat { -- stat -- объект "статус"
@@ -20,11 +23,30 @@ stat { -- stat -- объект "статус"
 		pn ('Ресурсы: ', resourceHP)
 		pn ('Кислород: ', oxygenHP)
 		pn ('Цикл: ', cycle)
+		pn('')
+		pn('Цель: ', goal)
+		pn('')
 	end
 };
 
+
+-- Объявление объекта карты
+obj {
+	nam = 'Карта',
+	inv = function(s)
+		-- Здесь код для отображения изображения карты
+		--game.pic = 'img/rooms/космос.png';
+		--return 'На бумаге небрежно срисована одна из схем корабля.'
+		return p[[Блок Ж: Туалет, Криокапсулы, Столовая, Комната отдыха, Медблок^^
+		Блок Р: Кухня, Ферма, Лаборатория, Шлюз^^
+		Блок Т: Кислород, Вода, Склад, Тех шлюз]]
+	end;
+}
+
 function init()
+	take 'Карта'
 	take 'статус'
+	
 end
 
 
@@ -81,6 +103,7 @@ function chooseRandomTask()
 	--taskIndex = 1
     currentTask.id = taskIndex
     currentTask.completed = false
+	
     return tasks[taskIndex], taskIndex, taskSkip[taskIndex]
 end
 
@@ -108,6 +131,7 @@ room {
 	Опять работать((]];
 
 	enter = function(s)
+		goal = ''
 		if  humanHP < 1 or rocketHP < 1 or resourceHP < 1 or oxygenHP < 1 then
 			walk('GAMEOVER', false, false)
 			return
@@ -137,6 +161,7 @@ room {
 	enter = function(s)
 		local chosenTask, taskId, chosenTaskSkip = chooseRandomTask()
 		currentTask.skip = chosenTaskSkip
+		goal = chosenTask
 		p("Новое задание!: " .. chosenTask)
 	end;
 
