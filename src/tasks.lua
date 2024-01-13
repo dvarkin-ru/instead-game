@@ -1,9 +1,4 @@
---[=[
-humanHP = 100;
-rocketHP = 100;
-resourceHP = 100;
-oxygenHP = 100;
-]=]
+
 
 ------ РЕШЕНИЯ ЗАДАНИЙ ------
 obj {

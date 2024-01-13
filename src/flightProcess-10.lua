@@ -38,7 +38,9 @@ obj {
 		--game.pic = 'img/rooms/космос.png';
 		--return 'На бумаге небрежно срисована одна из схем корабля.'
 		return p[[Блок Ж: Туалет, Криокапсулы, Столовая, Комната отдыха, Медблок^^
+		|^^
 		Блок Р: Кухня, Ферма, Лаборатория, Шлюз^^
+		|^^
 		Блок Т: Кислород, Вода, Склад, Тех шлюз]]
 	end;
 }
@@ -49,7 +51,7 @@ function init()
 	
 end
 
-
+--[=[
 room {
 	nam = "start10";
 	disp = "Отладочная страница";
@@ -67,7 +69,7 @@ room {
 	end;
 	way = {path {'Старт', "Полет"}};
 }
-
+]=]
 
 -- Список заданий
 local tasks = {
@@ -85,8 +87,10 @@ local taskSkip = {
 	"Ты спился, твои соседи по криокомнате спились, все спились. Конечно со временем вода и сама отфильтруется, но печень спасибо не скажет. К тому же некоторые члены экипажа ушли в запой и забили на свои обязанностии и выполнение задач.",
 	"Один из твоих коллег в темноте ударился мизинчиком об угол. Ты нехороший человек.",
 	"Пока все спали, тараканы угнали корабль, а все криокамеры и члены экипажа были выброшены за борт.",
-	"Ты решил ничего не делать с этими странными коконами. Со временем члены экипажа начали пропадать... Корабль превратился в прекрасную колонию чужих.",
+	"Ты решил ничего не делать с этими странными коконами. Со временем члены экипажа начали пропадать... Корабль скоро превратится в прекрасную колонию чужих.",
 }
+
+local completedTasks = {}
 
 -- Глобальная переменная для отслеживания статуса текущего задания
 global {
@@ -99,8 +103,21 @@ global {
 
 -- Функция для выбора задания
 function chooseRandomTask()
-    local taskIndex = math.random(#tasks)
-	--taskIndex = 1
+    local taskIndex = 1
+	--taskIndex = 4
+
+	local attempts = 0
+
+    repeat
+        taskIndex = math.random(#tasks)
+        attempts = attempts + 1
+
+        -- Если все задания выполнены, вернуть nil
+        if attempts > #tasks then
+            return nil
+        end
+    until not completedTasks[taskIndex]
+
     currentTask.id = taskIndex
     currentTask.completed = false
 	
@@ -162,6 +179,8 @@ room {
 		local chosenTask, taskId, chosenTaskSkip = chooseRandomTask()
 		currentTask.skip = chosenTaskSkip
 		goal = chosenTask
+		currentTask.completed = false
+		completedTasks[taskId] = true
 		p("Новое задание!: " .. chosenTask)
 	end;
 
