@@ -256,6 +256,10 @@ roomList = room {
       return;
     end;
 
+    if bugsCount > 0 and timestamp < getTimeStamp(1, 'д') then
+      snd.music('assets/sounds/terror.mp3', 0);
+    end;
+
     if math.random(1, 20) > 18 then
       walk(painAttack);
       return;
@@ -283,7 +287,7 @@ room {
   disp = 'Подготовка к запуску';
   obj = { document };
   onenter = function()
-    snd.music 'assets/theme.mp3';
+    snd.music('assets/sounds/theme.mp3', 0);
     snapshots:make();
   end;
 }
@@ -295,6 +299,12 @@ ready = room {
   disp = 'Это чудесное чувство после хорошо сделанной работы';
   dsc = [[Все системы ракеты проверены и работают безупречно, словно после чашки кофе с утра. Ракета готова к своему звездному вылету! Время покорить космос!]];
   pic = 'assets/ready.gif';
+  enter = function()
+    snd.music('assets/sounds/happy.mp3', 1);
+  end;
+  exit = function()
+    snd.stop_music()
+  end;
 }
 
 fail = room {
@@ -303,6 +313,12 @@ fail = room {
 
   Как бы ты не старался, но работу ты выполнил халатно, а потому два доблестных сотрудника охраны вывели тебя вперед ногами со стартовой площадки. Санаторий в Сибири не ждет...]];
   pic = 'assets/fail2.gif';
+  enter = function()
+    snd.music('assets/sounds/fail.mp3', 1);
+  end;
+  exit = function()
+    snd.stop_music()
+  end;
 }: with {
   obj {
     dsc = [[{Переиграть?}]];
