@@ -3,14 +3,14 @@ global {
 }
 
 stat { -- stat -- объект "статус"
-	nam = 'статус';
+	nam = 'статус_Андрей';
 	disp = function(s)
 		pn ('Здоровье тестера: ', humanHP)
 	end
 };
 
 function init()
-    take 'статус'
+    take 'статус_Андрей'
 end
 
 global {

@@ -305,6 +305,9 @@ ready = room {
   exit = function()
     snd.stop_music()
   end;
+  way = {
+    path {"Старт!", "Полет"},
+  };
 }
 
 fail = room {

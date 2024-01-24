@@ -6,7 +6,6 @@
 -------------------------
 
 global {
-    humanHP = 100;
     rocketHP = 100;
 	resourceHP = 100;
 	oxygenHP = 100;
@@ -96,15 +95,6 @@ local taskSkip = {
 }
 
 local completedTasks = {}
-
--- Глобальная переменная для отслеживания статуса текущего задания
-global {
-	currentTask = {
-   		id = nil,  -- ID выбранного задания
-    	completed = true,  -- Флаг завершения задания
-		skip = " "
-	}
-}
 
 -- Функция для выбора задания
 function chooseRandomTask()

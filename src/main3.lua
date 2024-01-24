@@ -33,7 +33,7 @@ room {
 	--way = {path {'Начать', "start10"} };
 
 	pic = 'assets/bg.png';
-	way = {path {'Краткая справка', 'tutorial'} };
+	way = {path {'Начать', 'космодром'} };
 }
 
 -- Аня
@@ -44,4 +44,9 @@ include "map"
 -- Серёжа
 include 'launchPreparation/tutorial'
 
+--Андрей
+include "andrey_room"
+include "andrey_game"
+include "andrey_obj"
+include "andrey_tasks"
 
