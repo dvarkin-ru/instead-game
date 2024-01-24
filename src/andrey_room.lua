@@ -121,6 +121,7 @@ room {
 	end;
 	exit = function(s)
 		checkEndGame(s)
+		deleteAlien(s)
 	end;
 }
 
