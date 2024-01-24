@@ -9,6 +9,7 @@ global {
   timestamp = 604800;
   bugsCount = math.random(6, 12);
   checkCount = 0;
+  isInvalidDocument = false;
 }
 
 ------------------------
@@ -97,6 +98,7 @@ document = obj {
       return true;
     else
       p [[Документ не подписан. Зачем проверять то, что точно не работает? Сидеть дальше нет смысла. Пойду домой...]];
+      isInvalidDocument = true
       return true;
     end;
   end;
@@ -252,7 +254,7 @@ roomList = room {
       return;
     end;
 
-    if bugsCount > 0 and timestamp < getTimeStamp(1, 'д') then
+    if timestamp == getTimeStamp(1, 'д') or timestamp < getTimeStamp(1, 'д') then
       snd.music('assets/sounds/terror.mp3', 0);
     end;
 
@@ -287,6 +289,19 @@ room {
     snd.music('assets/sounds/theme.mp3', 0);
     snapshots:make();
   end;
+}: with {
+  obj {
+    dsc = function()
+      if isInvalidDocument then
+        p(fmt.c '^');
+        p [[{Переиграть?}]];
+      end;
+    end;
+    act = function()
+      isInvalidDocument = false
+      snapshots:restore();
+    end;
+  }
 }
 
 ----------------------------
