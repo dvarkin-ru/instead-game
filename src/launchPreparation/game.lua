@@ -79,10 +79,6 @@ stat {
   end;
 };
 
-function init()
-  take 'статусы';
-end;
-
 ------------------------
 -- Основа --------------
 ------------------------
@@ -287,6 +283,7 @@ room {
   disp = 'Подготовка к запуску';
   obj = { document };
   onenter = function()
+    take "статусы"
     snd.music('assets/sounds/theme.mp3', 0);
     snapshots:make();
   end;
@@ -301,6 +298,7 @@ ready = room {
   pic = 'assets/ready.gif';
   enter = function()
     snd.music('assets/sounds/happy.mp3', 1);
+    drop "статусы"
   end;
   exit = function()
     snd.stop_music()

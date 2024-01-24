@@ -286,6 +286,7 @@ room {
 	dsc = [[Вы смогли продержаться на протяжении этого долгого полета^
 	Впереди тебя ждет процесс посадки, удачи!^^
 	Congratulations!]];
+	enter = function() drop 'Карта'; drop 'статус' end;
 	pic = '10-img/game_over.gif';
 }
 

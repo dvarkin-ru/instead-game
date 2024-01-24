@@ -9,10 +9,6 @@ stat { -- stat -- объект "статус"
 	end
 };
 
-function init()
-    take 'статус_Андрей'
-end
-
 global {
 	currentTask = {
    		id = 1,
