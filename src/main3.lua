@@ -34,6 +34,29 @@ room {
 
 	pic = 'assets/bg.png';
 	way = {path {'Начать', 'космодром'} };
+} :with {
+obj {
+	nam = 'полет_walk';
+	dsc = 'for debug {полет_walk}';
+	act = function()
+		walkin 'Полет'
+	end,
+},
+obj {
+	nam = 'космодром_walk';
+	dsc = 'for debug {космодром_walk}';
+	act = function()
+		walkin 'космодром'
+	end,
+},
+
+obj {
+	nam = 'tutorial_walk';
+	dsc = 'for debug {tutorial_walk}';
+	act = function()
+		walkin 'tutorial'
+	end,
+},
 }
 
 -- Аня
