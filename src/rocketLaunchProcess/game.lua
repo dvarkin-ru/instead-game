@@ -79,7 +79,7 @@ room {
   disp = 'Начало трансляции';
 	dsc = [[Трансляция началась, но космонавтов все еще нет на месте. Где же они?]];
   pic = 'rocketLaunchProcess/static/command-center.png';
-  isInit = false
+  isInit = false;
   way = {
     path {'Главный зал', 'зал'},
     path {'Офисное помещение', 'офис'},
@@ -95,7 +95,7 @@ room {
 	end;
   onenter = function()
     if isInit == false then
-      isInit = true
+      isInit = true;
       snapshots:make();
     end;
   end;
