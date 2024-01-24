@@ -319,7 +319,7 @@ ready = room {
     snd.stop_music()
   end;
   way = {
-    path {"Старт!", "Полет_main"},
+    path {"Старт!", "Запуск_main"},
   };
 }
 

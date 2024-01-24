@@ -49,7 +49,13 @@ obj {
 		walkin 'космодром'
 	end,
 },
-
+obj {
+	nam = 'запуск_walk';
+	dsc = 'for debug {запуск_walk}';
+	act = function()
+		walkin 'инфо'
+	end,
+},
 obj {
 	nam = 'tutorial_walk';
 	dsc = 'for debug {tutorial_walk}';
@@ -72,4 +78,7 @@ include "andrey_room"
 include "andrey_game"
 include "andrey_obj"
 include "andrey_tasks"
+
+-- Марат
+include 'rocketLaunchProcess/game'
 
