@@ -313,6 +313,7 @@ ready = room {
   pic = 'assets/ready.gif';
   enter = function()
     snd.music('assets/sounds/happy.mp3', 1);
+    snapshots:remove()
     drop "статусы"
   end;
   exit = function()

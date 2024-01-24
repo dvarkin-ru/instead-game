@@ -8,7 +8,7 @@ global {
 }
 
 stat {
-  nam = 'статусы_марат';
+  nam = 'статусы_матвей';
   disp = function()
     pn ('Терпение толпы:^', peoplesPatience..'%');
     pn ('Астронавтов: ', astrounautsCount);
@@ -50,7 +50,6 @@ room {
 	dsc = [[Настал день, когда человечество вновь сделает невозможное - отправится на встречу новому, ранее неизведанному]];
 	way = { path { 'Информация перед началом', 'инфо' } };
 	pic = 'rocketLaunchProcess/static/background.png';
-	enter = function() take 'статусы_марат'	end;
 }
 
 room {
@@ -70,6 +69,7 @@ room {
   pic = 'rocketLaunchProcess/static/operator.png';
   way = { path {'Начать игру', 'центр'} };
   enter = function()
+    take 'статусы_матвей';
     snd.music('rocketLaunchProcess/static/interstellar.mp3', 0);
   end;
 }
@@ -79,6 +79,7 @@ room {
   disp = 'Начало трансляции';
 	dsc = [[Трансляция началась, но космонавтов все еще нет на месте. Где же они?]];
   pic = 'rocketLaunchProcess/static/command-center.png';
+  isInit = false
   way = {
     path {'Главный зал', 'зал'},
     path {'Офисное помещение', 'офис'},
@@ -93,7 +94,10 @@ room {
     goToAstronauts();
 	end;
   onenter = function()
-    snapshots:make();
+    if isInit == false then
+      isInit = true
+      snapshots:make();
+    end;
   end;
 }
 
