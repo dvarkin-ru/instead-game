@@ -11,7 +11,9 @@ stat { -- stat -- объект "статус"
 
 global {
 	currentTask = {
-   		id = 1,
+   		id = 1,  -- ID выбранного задания
+    	completed = true,  -- Флаг завершения задания
+		skip = " "
 	}
 }
 
