@@ -93,9 +93,9 @@ room {
     goEndRoom();
     goToAstronauts();
 	end;
-  onenter = function()
-    if isInit == false then
-      isInit = true;
+  onenter = function(s)
+    if s.isInit == false then
+      s.isInit = true;
       snapshots:make();
     end;
   end;
