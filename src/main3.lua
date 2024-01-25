@@ -16,7 +16,7 @@ game.act = 'Не работает.';
 game.use = 'Это не поможет.';
 game.inv = 'Зачем мне это?';
 
-
+global {V={}}
 
 room {
 	nam = 'main';
@@ -33,7 +33,7 @@ room {
 	--way = {path {'Начать', "start10"} };
 
 	pic = 'assets/ready.gif';
-	way = {path {'Начать', 'луна_1'} };
+	way = {path {'Начать', 'build_rocket'} };
 } :with {
 obj {
 	nam = 'полет_walk';
@@ -91,3 +91,6 @@ include 'rocketLaunchProcess/game'
 
 -- Павел
 include 'tarasov'
+
+-- Настя
+include 'build_rocket'
