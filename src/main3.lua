@@ -33,7 +33,7 @@ room {
 	--way = {path {'Начать', "start10"} };
 
 	pic = 'assets/ready.gif';
-	way = {path {'Начать', 'космодром'} };
+	way = {path {'Начать', 'луна_1'} };
 } :with {
 obj {
 	nam = 'полет_walk';
@@ -63,6 +63,13 @@ obj {
 		walkin 'tutorial'
 	end,
 },
+obj {
+	nam = 'луна_1_walk';
+	dsc = 'for debug {луна_1_walk}';
+	act = function()
+		walkin 'луна_1'
+	end,
+},
 }
 
 -- Аня
@@ -82,3 +89,5 @@ include "andrey_tasks"
 -- Матвей
 include 'rocketLaunchProcess/game'
 
+-- Павел
+include 'tarasov'
