@@ -9,7 +9,7 @@ build_take_off_area = function(s, w)
 	p [[Кажется чего-то не хватает]]
 end
 
-build_build_house = function(s, w)
+build_house = function(s, w)
 	if have 'камни' and have 'пыль' then
 		p "Мы построили жк"
 		remove(_"камни")
