@@ -77,6 +77,13 @@ obj {
 		walkin 'landing'
 	end,
 },
+obj {
+	nam = 'disembark_walk';
+	dsc = 'for debug {disembark_walk}';
+	act = function()
+		walkin 'disembark'
+	end,
+}
 }
 
 -- Аня
@@ -104,3 +111,6 @@ include 'build_rocket'
 
 -- Роман
 include 'landing'
+
+-- Иван
+include 'disembark'

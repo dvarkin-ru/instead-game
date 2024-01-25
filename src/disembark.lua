@@ -6,7 +6,6 @@ require 'snapshots'
 -- Константы -----------
 ------------------------
 global {
-  timestamp = 0;
   people = math.random(10, 20);
 }
 
@@ -190,10 +189,18 @@ camp = room {
   };
   exit = function(s)
     if #s.obj == 0 then
-      walk(ready);
+      walk(ready_pusheen);
       return;
     end;
   end;
+}
+
+room {
+  nam = 'disembark_main';
+  disp = 'Начальный экран';
+  dsc = [[С мостика по всему кораблю раздались звуки подготовки к высадке.^Поднялись стойки седьмого отсека, включились системы стабилизации. Экипаж "Аура Нова" вступил в новую главу своего путешествия, направляясь к неизведанным территориям, где каждый шаг мог открыть перед ними тайны далеких миров.]];
+  pic = 'assets/planet.png';
+  way = {path {'Процесс высадки', 'disembark'} };
 }
 
 room {
@@ -202,11 +209,12 @@ room {
   pic = 'assets/bg-pusheen.png';
   way = {path {'Высадка', 'camp'} };
   onenter = function()
+    timestamp = 0;
     snapshots:make();
   end;
 }
 
-ready = room {
+ready_pusheen = room {
   disp = 'Вы прошли игру!';
   pic = 'assets/ready-pusheen.gif';
 }: with {

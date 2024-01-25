@@ -56,7 +56,7 @@ phr = {
 {false, '#безатм4', [[Ракета с космонавтами с грохотом приземлилась. Нужно проверить всех космонавтов и всё оборудование.]], always=true,
 {'Проверить космонавтов', next='#безатм4', always=true, function() V["космы_в_порядке"] = 1 end},
 {'Проверить оборудование', next='#безатм4', always=true, function() V["вещи_в_порядке"] = 1 end},
-{'Начать высадку', cond = function() return V["космы_в_порядке"] and V["вещи_в_порядке"] end, next='#безатм4', always=true},
+{'Начать высадку', cond = function() return V["космы_в_порядке"] and V["вещи_в_порядке"] end, next='#безатм4', always=true, function() walk 'disembark_main' end},
 },
 
 }}
