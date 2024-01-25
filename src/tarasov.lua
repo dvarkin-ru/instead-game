@@ -77,18 +77,18 @@ room {
 
 room {
 	nam = 'кратор';
-    pic = 'img/tarasov/luna_5';
+    pic = 'img/tarasov/luna_5.jpg';
 	disp = "Кратор";
 } :with {
 	obj {
 		nam = 'грязь';
-		dsc = 'В краторе лежит грязь';
+		dsc = 'В краторе лежит {грязь}';
 		tak = 'Вы взяли грязь.';
 		use = build_take_off_area;
 	},
 	obj {
 		nam = 'палки';
-		dsc = 'В краторе лежат палки';
+		dsc = 'В краторе лежат {палки}';
 		tak = 'Вы взяли палки.';
 		use = build_take_off_area;
 	}
@@ -98,7 +98,7 @@ room {
     nam = 'стартовая площадка';
     dsc = 'Неплохо получилось';
     disp = 'Стартовая площадка';
-    pic = 'img/tarasov/luna_6';
+    pic = 'img/tarasov/luna_6.jpg';
     way = {
         path {"Пойти на ровнину", "равнина"}
     }
@@ -106,18 +106,18 @@ room {
 
 room {
 	nam = 'равнина';
-    pic = 'img/tarasov/luna_7';
+    pic = 'img/tarasov/luna_7.jpg';
 	disp = "Равнина";
 } :with {
 	obj {
 		nam = 'камни';
-		dsc = 'Здесь много камней';
+		dsc = 'Здесь много {камней}';
 		tak = 'Вы взяли камни';
 		use = build_house;
 	},
 	obj {
 		nam = 'пыль';
-		dsc = 'Тут много пыли';
+		dsc = 'Тут много {пыли}';
 		tak = 'Вы взяли пыль';
 		use = build_house;
 	}
@@ -127,7 +127,7 @@ room {
     nam = 'жк';
     dsc = 'Хороший жк';
     disp = 'Жилой комплекс';
-    pic = 'img/tarasov/luna_8';
+    pic = 'img/tarasov/luna_8.jpg';
     way = {
         path {"Прогуляться до холма", "холм"}
     }
@@ -135,18 +135,18 @@ room {
 
 room {
 	nam = 'холм';
-    pic = 'img/tarasov/luna_9';
+    pic = 'img/tarasov/luna_9.jpg';
 	disp = "Холм";
 } :with {
 	obj {
 		nam = 'блины';
-		dsc = 'Здесь есть блины разных весов';
+		dsc = 'Здесь есть {блины} разных весов';
 		tak = 'Вы взяли блины';
 		use = build_gym;
 	},
 	obj {
 		nam = 'гриф';
-		dsc = 'Тут много грифов';
+		dsc = 'Тут много {гриф}ов';
 		tak = 'Вы взяли грифы';
 		use = build_gym;
 	}
@@ -156,7 +156,7 @@ room {
     nam = 'качалка';
     dsc = 'Крутая качалка';
     disp = 'Качалка';
-    pic = 'img/tarasov/luna_10';
+    pic = 'img/tarasov/luna_10.jpg';
     way = {
         path {"конец", "конец_площадка"}
     }
@@ -166,7 +166,7 @@ room {
     nam = 'конец_площадка';
     dsc = 'Начальник выражает слова благодарности за проделанную работу';
     disp = 'Конец';
-    pic = 'img/tarasov/luna_11';
+    pic = 'img/tarasov/luna_11.jpg';
     way = {
         path {"Тестирование", "космодром"}
     }
