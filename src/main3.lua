@@ -70,6 +70,13 @@ obj {
 		walkin 'луна_1'
 	end,
 },
+obj {
+	nam = 'landing_walk';
+	dsc = 'for debug {landing_walk}';
+	act = function()
+		walkin 'landing'
+	end,
+},
 }
 
 -- Аня
@@ -94,3 +101,6 @@ include 'tarasov'
 
 -- Настя
 include 'build_rocket'
+
+-- Роман
+include 'landing'

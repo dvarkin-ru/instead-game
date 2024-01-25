@@ -288,6 +288,10 @@ room {
 	Congratulations!]];
 	enter = function() drop 'Карта'; drop 'статус' end;
 	pic = '10-img/game_over.gif';
+	way = {
+		path { 'Процесс посадки', 'landing' },
+		--path { 'Обшивка корабля', 'обшивка' },
+	};
 }
 
 room {
