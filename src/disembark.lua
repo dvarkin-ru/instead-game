@@ -111,10 +111,6 @@ stat {
   end;
 };
 
-function init()
-  take 'state';
-end;
-
 ------------------------
 -- Игра --------------
 ------------------------
@@ -210,6 +206,7 @@ room {
   way = {path {'Высадка', 'camp'} };
   onenter = function()
     timestamp = 0;
+    take 'state';
     snapshots:make();
   end;
 }
