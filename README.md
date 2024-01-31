@@ -72,6 +72,8 @@
 
 ## 📚 Источники
 
+- [Lua - документация](https://www.lua.org/)
+- [INSTEAD - документация](http://instead.hugeping.ru/)
 - [Отчёт по групповой работе на тему: проектирование ракеты - Google Документы](https://docs.google.com/document/d/15y1OVlJ7-bWm9OdOafuRtJqNwFUQgTpXdyYrubUSaY0/edit)
 - [Документация к Instead - Github](https://github.com/instead-hub/instead/blob/master/doc/stead3-ru.md)
 
